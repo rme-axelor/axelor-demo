@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+	<module name="student" package="com.axelor.student.db"/>
+
+	<sequence name="people.reference" increment="1" initial="1" padding="4" prefix="PE" suffix="AXE"/>
+	
+<!-- example of sequence -	PE0001AXE -->
+	
+
+	<entity name="People" lang="java" jsonAttrs="false" table="my_specific_table">
+		<string name="jsonDetails" title="Json details" json="true"/>
+		<string name="uniqueTestField" title="Unique testing" unique="true" min="1" max="10" namecolumn="true"/>
+		
+		<string name="transientTest" title="Transient test" transient="true"/> <!--this field's column is not created in table -->
+		
+		<string name="test" large="true" multiline="true"/>
+		<string name="reference" title="Reference" sequence="people.reference" readonly="true"/>
+		<string name="password" title="Password" password="true" encrypted="true"/>
+		
+		<date name="dateOfBirth" title="DOB"/>
+		<time name="timeOfBirth" title="Birth time"/>
+		
+		<datetime name="dateTimeT" tz="true" title="Date time test"/>
+		
+		<many-to-one ref="com.axelor.meta.db.MetaFile" name="image" title="Image"/>
+		
+	</entity>
+</domain-models>

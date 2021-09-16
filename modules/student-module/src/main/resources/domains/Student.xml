@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models
+	xmlns="http://axelor.com/xml/ns/domain-models"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+	<module name="student" package="com.axelor.student.db" />
+
+	<enum name="STATUS">
+		<item name="PASS" value="pass"/>
+		<item name="FAIL" value="fail"/>
+	</enum>
+
+	<entity name="Student" lang="java">
+		<enum name="status" ref="STATUS"/>
+		
+		<string name="name" title="Name" namecolumn="true"/>
+		<string name="rollNumber" title="Roll number"/>
+
+		<integer name="classNumber" title="Class number" default="1" massUpdate="true"/>
+		
+		<decimal name="percentage" title="%" help="This field is used to fill last class percentage of student" precision="5" scale="2"/>
+		
+		<string name="parentName" title="Parent name" required="true"/>
+		<string name="testFieldForColumn" title="Test field for column" column="test_field" default="test" required="true"/>
+		
+		<!-- Column name based on field would be 'test_field_for_column' -->
+		
+		<boolean name="isActive" title="Is active"/>
+		
+		<binary name="image" title="Image"/>
+		
+		<many-to-one ref="com.axelor.student.db.School" name="school" title="School"/>
+	</entity>
+
+</domain-models>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models
+	xmlns="http://axelor.com/xml/ns/domain-models"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+	<module name="student" package="com.axelor.student.db" />
+
+	<entity name="Address">
+		<string name="completeAddress" title="Complete address" namecolumn="true"/>
+		
+		<!-- Not a good idea to use shortcut but it is just for understanding -->
+		<one-to-one ref="School" name="school" mappedBy="address"/>
+	</entity>
+</domain-models>

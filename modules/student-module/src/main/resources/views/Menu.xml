@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<menuitem title="Demo" name="student-root"/>
+	
+	<menuitem title="Students" name="student-root-student" parent="student-root" action="action.student.root.student"/>
+	<action-view name="action.student.root.student" title="Students" model="com.axelor.student.db.Student">
+		<view type="grid" name="student-grid"/>
+		<view type="form" name="student-form"/>
+	</action-view>   
+
+	<menuitem title="Peoples" name="student-root-people" parent="student-root" action="action.student.root.people"/>
+	<action-view name="action.student.root.people" title="Peoples" model="com.axelor.student.db.People">
+		<view type="grid" name="people-grid"/>
+		<view type="form" name="people-form"/>
+	</action-view>
+
+	<menuitem title="Schools" name="student-root-school" parent="student-root" action="action.student.root.school"/>
+	<action-view name="action.student.root.school" title="Schools" model="com.axelor.student.db.School">
+		<view type="grid" name="school-grid"/>
+		<view type="form" name="school-form"/>
+	</action-view>
+
+	<menuitem title="Addresses" name="student-root-address" parent="student-root" action="action.student.root.address"/>
+	<action-view name="action.student.root.address" title="Addresses" model="com.axelor.student.db.Address">
+		<view type="grid" name="address-grid"/>
+		<view type="form" name="address-form"/>
+	</action-view>
+	
+</object-views>

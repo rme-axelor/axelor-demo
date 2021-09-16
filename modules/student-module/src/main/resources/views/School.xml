@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<grid model="com.axelor.student.db.School" title="Schools" name="school-grid">
+		<field name="schoolName"/>
+		<field name="address"/>
+	</grid>
+	
+	<form model="com.axelor.student.db.School" title="School" name="school-form">
+		<panel>
+			<field name="schoolName"/>
+			<field name="address"/>
+			
+			<panel-related field="studentList"/> <!-- For o2m and m2m we have to use panel-related -->
+			<panel-related field="peopleSet"/>
+		</panel>
+	</form>
+    
+</object-views>

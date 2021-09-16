@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<grid model="com.axelor.student.db.Address" title="Addresses" name="address-grid">
+		<field name="completeAddress"/>
+		<field name="school"/>
+	</grid>
+    
+    <form model="com.axelor.student.db.Address" title="Address" name="address-form">
+    	<panel>
+			<field name="completeAddress"/>
+			<field name="school"/>
+    	</panel>
+    </form>
+</object-views>

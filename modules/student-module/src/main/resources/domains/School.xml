@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models
+	xmlns="http://axelor.com/xml/ns/domain-models"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+	<module name="student" package="com.axelor.student.db" />
+	
+	<entity name="School">
+		<string name="schoolName" title="School Name" namecolumn="true"/> <!-- namecolumn should be used only once per entity -->
+		
+		<one-to-one ref="com.axelor.student.db.Address" name="address"/>
+		
+		<one-to-many ref="com.axelor.student.db.Student" name="studentList" title="Students" mappedBy="school" orderBy="rollNumber"/>
+		
+		<many-to-many ref="com.axelor.student.db.People" name="peopleSet" title="Peoples"/>
+		
+	</entity>
+	
+</domain-models>
