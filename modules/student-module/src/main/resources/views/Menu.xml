@@ -21,6 +21,14 @@
 	<action-view name="action.student.root.school" title="Schools" model="com.axelor.student.db.School">
 		<view type="grid" name="school-grid"/>
 		<view type="form" name="school-form"/>
+		<domain>self.address != null</domain>
+	</action-view>
+
+	<menuitem title="Test schools" name="student-root-test-school" parent="student-root" action="action.student.test.school"/>
+	<action-view name="action.student.test.school" title="Test schools" model="com.axelor.student.db.School">
+		<view type="grid" name="school-test-grid"/>
+		<view type="form" name="school-form"/>
+		<domain>self.address = null</domain>
 	</action-view>
 
 	<menuitem title="Addresses" name="student-root-address" parent="student-root" action="action.student.root.address"/>

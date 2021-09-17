@@ -3,17 +3,38 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-	<grid model="com.axelor.student.db.School" title="Schools" name="school-grid" editable="true">
-		<field name="schoolType"/>
+	<grid model="com.axelor.student.db.School" title="Schools" name="school-grid" groupBy="schoolType">
+		<!-- to check css classes do visit open-platform-demo repo for references -->
+<!-- 	<grid model="com.axelor.student.db.School" title="Schools" name="school-grid" canArchive="false" canDelete="false" canEdit="false" edit-icon="false" canNew="false"> -->
+		<hilite if="schoolName == null" color="danger" strong="true"/>
+		<field name="schoolType" hidden="true"/>
 		<field name="schoolName"/>
 		<field name="address"/>
 	</grid>
 	
+	<grid model="com.axelor.student.db.School" title="Schools" name="school-test-grid" editable="true">
+		<toolbar>
+			<button onClick="clickMe" prompt="Are you sure? (From toolBar)" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
+		</toolbar>
+		<menubar>
+			<menu title="Buttons">
+				<item action="action" title="Test"/>
+			</menu>
+			<menu title="Button1">
+				<item action="action1" title="Test 1"/>
+			</menu>
+		</menubar>
+		<field name="schoolType" title="Test school"/>
+		<field name="schoolName"/>
+		<field name="address" domain="self.completeAddress = 'SURAT'" massUpdate="true"/>
+		<button onClick="clickMe" prompt="Are you sure?" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
+	</grid>
+	
 	<form model="com.axelor.student.db.School" title="School" name="school-form">
 		<panel>
-			<field name="schoolType"/>
+			<field name="schoolType" />
 			<field name="schoolName"/>
-			<field name="address"/>
+			<field name="address" canEdit="true"/>
 			
 			<panel-related field="studentList"/> <!-- For o2m and m2m we have to use panel-related -->
 			<panel-related field="peopleSet"/>
