@@ -7,7 +7,8 @@
 	<module name="student" package="com.axelor.student.db" />
 
 	<entity name="Address">
-		<string name="completeAddress" title="Complete address" namecolumn="true"/>
+		<string name="name" title="Name" initParam="true"/>
+		<string name="completeAddress" title="Complete address" initParam="true"/>
 		
 		<!-- Not a good idea to use shortcut but it is just for understanding -->
 		<one-to-one ref="School" name="school" mappedBy="address"/>

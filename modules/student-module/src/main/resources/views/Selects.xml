@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<!--  name convention is moduleName.entityName.fieldName -->
+	
+	<selection name="student.school.school.type">
+		<option value="government">Government</option>
+		<option value="semi-government">Semi-Government</option>
+		<option value="private">Private</option>
+	</selection>
+    
+</object-views>

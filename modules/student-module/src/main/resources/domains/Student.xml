@@ -14,7 +14,15 @@
 	<entity name="Student" lang="java">
 		<enum name="status" ref="STATUS"/>
 		
-		<string name="name" title="Name" namecolumn="true"/>
+		<string name="name" title="Name"/>
+		<string name="email" title="Email"/> <!-- Need to check its default finder method generation -->
+		
+		<string name="fullName" title="FullName" search="name,email">
+			<![CDATA[
+				return name + ":" + email; 
+			]]>
+		</string>
+		
 		<string name="rollNumber" title="Roll number"/>
 
 		<integer name="classNumber" title="Class number" default="1" massUpdate="true"/>
@@ -31,6 +39,10 @@
 		<binary name="image" title="Image"/>
 		
 		<many-to-one ref="com.axelor.student.db.School" name="school" title="School"/>
+		
+		<finder-method name="findByNameAndEmail" using="name,email"/>
+		<finder-method name="findAllByNameAndEmail" using="name,email" all="true"/>
+		<finder-method name="findByNameOrEmail" using="String:name,String:email" filter="self.name = :name OR self.email = :email"/>
 	</entity>
 
 </domain-models>

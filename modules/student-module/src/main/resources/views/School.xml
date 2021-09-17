@@ -3,13 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-	<grid model="com.axelor.student.db.School" title="Schools" name="school-grid">
+	<grid model="com.axelor.student.db.School" title="Schools" name="school-grid" editable="true">
+		<field name="schoolType"/>
 		<field name="schoolName"/>
 		<field name="address"/>
 	</grid>
 	
 	<form model="com.axelor.student.db.School" title="School" name="school-form">
 		<panel>
+			<field name="schoolType"/>
 			<field name="schoolName"/>
 			<field name="address"/>
 			

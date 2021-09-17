@@ -5,6 +5,7 @@
 
 	<grid model="com.axelor.student.db.Student" title="Students" name="student-grid">
 		<field name="name"/>
+		<field name="email"/>
 		<field name="rollNumber"/>
 		<field name="classNumber"/>
 		<field name="percentage"/>
@@ -14,7 +15,9 @@
 	<form model="com.axelor.student.db.Student" title="Student" name="student-form">
 		<panel>
 			<field name="status"/>
+			<field name="fullName" readonly="true"/>
 			<field name="name"/>
+			<field name="email"/>
 			<field name="rollNumber"/>
 			<field name="classNumber"/>
 			<field name="percentage"/>

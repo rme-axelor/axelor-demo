@@ -7,6 +7,7 @@
 	<module name="student" package="com.axelor.student.db" />
 	
 	<entity name="School">
+		<string name="schoolType" title="School type" selection="student.school.school.type"/> <!-- selection can be used on string or integer type of field -->
 		<string name="schoolName" title="School Name" namecolumn="true"/> <!-- namecolumn should be used only once per entity -->
 		
 		<one-to-one ref="com.axelor.student.db.Address" name="address"/>
@@ -15,6 +16,14 @@
 		
 		<many-to-many ref="com.axelor.student.db.People" name="peopleSet" title="Peoples"/>
 		
+		<extra-code>
+			<![CDATA[
+				//school type
+				public static final String SCHOOL_TYPE_GOVERNMENT = "government" ;
+				public static final String SCHOOL_TYPE_SEMI_GOVERNMENT = "semi-government" ;
+				public static final String SCHOOL_TYPE_PRIVATE = "private" ;
+			]]>
+		</extra-code>
 	</entity>
 	
 </domain-models>
