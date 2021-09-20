@@ -27,14 +27,22 @@
 			</panel>
 		</panel>
 		<!-- to use < in xml we have use html codes i.e &lt; -->
-			<panel name="innerPanel2" colSpan="4" title="Inner panel 2" stacked="true" itemSpan="3" hideIf="percentage &lt;= 35" sidebar="true"
+			<panel name="innerPanel2" colSpan="4" title="Inner panel 2" itemSpan="3" hideIf="percentage &lt;= 35" sidebar="true"
 				canCollapse="true" collapseIf="true">
 				<field name="parentName"/>
 				<field name="testFieldForColumn"/>
 				<field name="isActive"/>
 				<field name="image"/>
-				<field name="school"/>
+				<field name="school" colSpan="6"/>
 			</panel>
+	</form>
+
+	<form model="com.axelor.student.db.Student" title="Student" name="student-popup-form">
+		<panel>
+			<field name="name"/>
+			<field name="email"/>
+			<field name="school" hideIf="$popup()"/>
+		</panel>
 	</form>
 
 	<!-- For testing onSave -->

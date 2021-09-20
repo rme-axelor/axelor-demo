@@ -11,18 +11,64 @@
 	</grid>  
     
 	<form model="com.axelor.student.db.People" title="People" name="people-form">
-		<panel>
+		<panel name="mainPanel" title="Main panel">
 			<field name="reference"/>
-			<field name="jsonDetails"/>
+			<field name="jsonDetails" widget="json-raw"/>
+			
+			<help colSpan="6">This is the help tag implementation</help>
+			<label title="This is label"/>
+			<separator colSpan="12"/>
+			
 			<field name="uniqueTestField"/>
+			
+			<spacer/>
+			<static colSpan="12">This is static text</static>
+			
 			<field name="transientTest"/> 
 			<field name="test"/>
-			<field name="password"/>
-			<field name="dateOfBirth"/>
-			<field name="timeOfBirth"/>
-			<field name="dateTimeT"/>
-			<field name="image"/>
+		</panel>
+		<panel-tabs>
+			<panel name="personalDetailsPanel" title="Personal details" onTabSelect="action-people-record-on-personal-details-tab-select">
+				<panel name="birtDetails" title="Birth details">
+					<field name="dateOfBirth"/>
+					<field name="timeOfBirth"/>
+					<field name="dateTimeT"/>
+				</panel>
+				<panel name="imagePanel" title="Image panel">
+					<field name="image"/>
+				</panel>
+			</panel>
+			<panel name="passwordPanel" title="Password" onTabSelect="action-people-record-password-tab-select">
+				<field name="password" widget="password"/>
+			</panel>
+		</panel-tabs>
+<!-- 		<panel-stack> -->
+<!-- 			<panel name="birtDetails" title="Birth details"> -->
+<!-- 					<field name="dateOfBirth"/> -->
+<!-- 					<field name="timeOfBirth"/> -->
+<!-- 					<field name="dateTimeT"/> -->
+<!-- 				</panel> -->
+<!-- 				<panel name="imagePanel" title="Image panel"> -->
+<!-- 					<field name="image"/> -->
+<!-- 				</panel> -->
+<!-- 		</panel-stack> -->
+		
+		<panel name="buttonsPanel" sidebar="true">
+			<button onClick="action-people-validate-validate-onclick" name="validateBtn" title="Validate"/>
 		</panel>
 	</form>
-    
+
+	<action-record name="action-people-record-on-personal-details-tab-select" model="com.axelor.student.db.People">
+		<field name="dateOfBirth" expr="eval: __date__" if="dateOfBirth == null"/>
+		<!-- __date__ -->
+	</action-record>
+
+	<action-record name="action-people-record-password-tab-select" model="com.axelor.student.db.People">
+		<field name="password" expr="12345" if="password == null"/>
+	</action-record>
+
+	<action-validate name="action-people-validate-validate-onclick">
+		<info message="Password is default only" if="password == '12345'"/>
+	</action-validate>
+
 </object-views>
