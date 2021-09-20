@@ -14,7 +14,7 @@
 
 	<form model="com.axelor.student.db.Student" title="Student" name="student-form" onNew="action-student-record-onnew"
 		onLoad="action-student-valiate-student" onSave="action-student-record-onsave" canAttach="false" width="large">
-		<panel name="mainPanel" title="Main panel" showFrame="true">
+		<panel name="mainPanel" title="Main panel" showFrame="true" if-module="student-module">
 			<!-- internal elements will take colSpan 6 by default -->
 			<panel name="innerPanel1" colSpan="8" title="Inner panel 1">
 				<field name="status" colSpan="8" showTitle="false" widget="NavSelect"/>
@@ -25,15 +25,16 @@
 				<field name="classNumber"/>
 				<field name="percentage"/>
 			</panel>
-			<!-- to use < in xml we have use html codes i.e &lt; -->
-			<panel name="innerPanel2" colSpan="4" title="Inner panel 2" itemSpan="3" hideIf="percentage &lt;= 35" >
+		</panel>
+		<!-- to use < in xml we have use html codes i.e &lt; -->
+			<panel name="innerPanel2" colSpan="4" title="Inner panel 2" stacked="true" itemSpan="3" hideIf="percentage &lt;= 35" sidebar="true"
+				canCollapse="true" collapseIf="true">
 				<field name="parentName"/>
 				<field name="testFieldForColumn"/>
 				<field name="isActive"/>
 				<field name="image"/>
 				<field name="school"/>
 			</panel>
-		</panel>
 	</form>
 
 	<!-- For testing onSave -->
