@@ -12,6 +12,7 @@
     
 	<form model="com.axelor.student.db.People" title="People" name="people-form">
 		<panel name="mainPanel" title="Main panel">
+			<field name="$isValidated" title="Validated" type="one-to-many" target="com.axelor.student.db.Address" colSpan="12"/>
 			<field name="reference"/>
 			<field name="jsonDetails" widget="json-raw"/>
 			
@@ -54,9 +55,34 @@
 <!-- 		</panel-stack> -->
 		
 		<panel name="buttonsPanel" sidebar="true">
-			<button onClick="action-people-validate-validate-onclick" name="validateBtn" title="Validate"/>
+			<button onClick="action-people-record-fill-validate" name="validateBtn" title="Validate"/>
 		</panel>
 	</form>
+
+	<cards name="people-cards" model="com.axelor.student.db.People" title="People" width="300px">
+		<field name="reference"/>
+		<field name="uniqueTestField"/>
+		<field name="dateOfBirth"/>
+		<field name="timeOfBirth"/>
+		<field name="image"/>
+		<template>
+			<![CDATA[
+				<div class="span4 card-image">
+    				<img ng-if="image" ng-src="{{$image(null, 'image')}}">
+				</div>
+				<div class="span8">
+					<strong>{{reference}}</strong>
+					<br/>
+    				<strong>{{uniqueTestField}}</strong>
+    				<br/>
+    				<strong>{{dateOfBirth}}</strong>
+    				<br/>
+    				<strong>{{timeOfBirth}}</strong>
+				</div>
+			]]>
+		</template>
+	</cards>
+
 
 	<action-record name="action-people-record-on-personal-details-tab-select" model="com.axelor.student.db.People">
 		<field name="dateOfBirth" expr="eval: __date__" if="dateOfBirth == null"/>
@@ -70,5 +96,9 @@
 	<action-validate name="action-people-validate-validate-onclick">
 		<info message="Password is default only" if="password == '12345'"/>
 	</action-validate>
+
+	<action-record name="action-people-record-fill-validate" model="com.axelor.student.db.People">
+		<field name="$isValidated" expr="eval: true"/>
+	</action-record>
 
 </object-views>

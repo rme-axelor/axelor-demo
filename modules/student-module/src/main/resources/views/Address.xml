@@ -13,7 +13,7 @@
     	<panel>
     		<field name="name"/>
 			<field name="completeAddress"/>
-			<field name="school"/>
+			<field name="school" target-name="schoolType"/>
     	</panel>
     </form>
 </object-views>

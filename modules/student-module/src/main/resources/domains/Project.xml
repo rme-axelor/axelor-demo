@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+	
+	<module package="com.axelor.student.db" name="student"/>
+	
+	<entity name="Project">
+		<integer name="statusSelect" selection="student.project.status.select" title="Status"/>
+		<integer name="priority"/>
+		
+		<string name="name" title="Name"/>
+		<decimal name="percentage" title="%"/>
+		<string name="description" title="Description" large="true"/>
+	</entity>
+	
+</domain-models>

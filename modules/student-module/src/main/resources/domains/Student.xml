@@ -13,6 +13,7 @@
 
 	<entity name="Student" lang="java">
 		<enum name="status" ref="STATUS"/>
+		<integer name="sequence"/>
 		
 		<string name="name" title="Name"/>
 		<string name="email" title="Email"/> <!-- Need to check its default finder method generation -->

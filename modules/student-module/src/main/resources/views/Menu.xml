@@ -15,6 +15,7 @@
 	<action-view name="action.student.root.people" title="Peoples" model="com.axelor.student.db.People">
 		<view type="grid" name="people-grid"/>
 		<view type="form" name="people-form"/>
+		<view type="cards" name="people-cards"/>
 	</action-view>
 
 	<menuitem title="Schools" name="student-root-school" parent="student-root" action="action.student.root.school"/>
@@ -36,5 +37,10 @@
 		<view type="grid" name="address-grid"/>
 		<view type="form" name="address-form"/>
 	</action-view>
-	
+
+	<menuitem title="Projects" name="student-root-project" parent="student-root" action="action.student.root.project"/>
+	<action-view name="action.student.root.project" title="Projects" model="com.axelor.student.db.Project">
+		<view type="kanban" name="project-kanban"/>
+		<view type="form" name="project-form"/>
+	</action-view>
 </object-views>

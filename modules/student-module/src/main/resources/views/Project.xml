@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+	<kanban columnBy="statusSelect" model="com.axelor.student.db.Project" sequenceBy="priority" title="Projects" name="project-kanban"
+		draggable="true" onMove="action-project-validate-kanban-on-move" onNew="action-project-record-kanban-on-new" limit="2">
+		<field name="name"/>
+		<field name="percentage"/>
+		<field name="description"/>
+		<template>
+			<![CDATA[
+				<div>
+					<h4>Name:</h4>
+					<h5>{{record.name}}</h5>
+					<br/>
+					<h4>%:</h4>
+					<h5>{{record.percentage}}</h5>
+					<br/>
+					<h4>Description:</h4>
+					<span ng-bind-html="description"/>
+				</div>
+			]]>
+		</template>
+	</kanban>
+
+	<form model="com.axelor.student.db.Project" title="Project" name="project-form">
+		<panel name="mainPanel" title="Main panel">
+			<field name="statusSelect" showTitle="false" widget="NavSelect" colSpan="12"/>
+			<field name="name"/>
+			<field name="percentage"/>
+			<field name="description" widget="html" colSpan="12"/>
+		</panel>
+	</form>
+
+	<action-record name="action-project-record-kanban-on-new" model="com.axelor.student.db.Project">
+		<field name="name" expr="eval: _value"/>
+	</action-record>
+
+	<action-validate name="action-project-validate-kanban-on-move">
+		<info message="Record moved!"/>
+	</action-validate>
+
+</object-views>

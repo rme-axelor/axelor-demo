@@ -37,8 +37,31 @@
 			<field name="address" canEdit="true"/>
 		</panel>
 		<panel-tabs>
-			<panel-related field="studentList" colSpan="12" form-view="student-popup-form" grid-view="student-grid"/> <!-- For o2m and m2m we have to use panel-related -->
-			<panel-related field="peopleSet" colSpan="12"/>
+			<panel-related field="studentList" colSpan="12" form-view="student-popup-form" grid-view="student-grid"
+				canMove="true" orderBy="sequence" x-selector="checkbox"/> <!-- For o2m and m2m we have to use panel-related -->
+			<panel-related field="peopleSet" colSpan="12" x-selector="checkbox"/>
+			<panel title="Students editor">
+				<field name="studentList" showTitle="false">
+					<editor x-viewer="true">
+						<field name="name"/>
+						<field name="parentName"/>
+					</editor>
+				</field>
+			</panel>
+			<panel title="Students editor viewer">
+				<field name="studentList" showTitle="false">
+					<viewer>
+						<![CDATA[
+							<strong>{{record.name}}</strong>
+							<h4>{{record.parentName}}</h4>
+						]]>
+					</viewer>
+					<editor>
+						<field name="name"/>
+						<field name="parentName"/>
+					</editor>
+				</field>
+			</panel>
 		</panel-tabs>
 	</form>
     

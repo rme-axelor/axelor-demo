@@ -3,25 +3,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-	<grid model="com.axelor.student.db.Student" title="Students" name="student-grid" groupBy="classNumber">
+	<grid model="com.axelor.student.db.Student" title="Students" name="student-grid">
 		<field name="name"/>
 		<field name="email"/>
 		<field name="rollNumber"/>
 		<field name="classNumber"/>
-		<field name="percentage" aggregate="avg"/>
+		<field name="percentage"/>
 		<field name="parentName"/>
 	</grid>
 
 	<form model="com.axelor.student.db.Student" title="Student" name="student-form" onNew="action-student-record-onnew"
 		onLoad="action-student-valiate-student" onSave="action-student-record-onsave" canAttach="false" width="large">
+		<panel-include view="student-popup-form"/>
+		
 		<panel name="mainPanel" title="Main panel" showFrame="true" if-module="student-module">
 			<!-- internal elements will take colSpan 6 by default -->
 			<panel name="innerPanel1" colSpan="8" title="Inner panel 1">
 				<field name="status" colSpan="8" showTitle="false" widget="NavSelect"/>
 				<field name="fullName" readonly="true" colSpan="4"/>
-				<field name="name"/>
-				<field name="email"/>
-				<field name="rollNumber"/>
+<!-- 				<field name="name"/> -->
+<!-- 				<field name="email"/> -->
+<!-- 				<field name="rollNumber"/> -->
 				<field name="classNumber"/>
 				<field name="percentage"/>
 			</panel>
@@ -38,10 +40,10 @@
 	</form>
 
 	<form model="com.axelor.student.db.Student" title="Student" name="student-popup-form">
-		<panel>
+		<panel name="innerPanel1" title="Inner panel 1">
 			<field name="name"/>
 			<field name="email"/>
-			<field name="school" hideIf="$popup()"/>
+			<field name="rollNumber"/>
 		</panel>
 	</form>
 
