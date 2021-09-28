@@ -3,19 +3,36 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
 
-	<menuitem title="Demo" name="student-root"/>
+	<menuitem title="Demo" name="student-root" order="-111" />
 	
-	<menuitem title="Students" name="student-root-student" parent="student-root" action="action.student.root.student"/>
-	<action-view name="action.student.root.student" title="Students" model="com.axelor.student.db.Student">
+	<menuitem title="Students" name="student-root-student" parent="student-root" action="action.student.root.student" icon="fa-user" icon-background="blue" tag-count="true"/>
+	
+	<action-view name="action.student.root.student" title="Students" model="com.axelor.student.db.Student" icon="fa-user" home="true">
 		<view type="grid" name="student-grid"/>
 		<view type="form" name="student-form"/>
 	</action-view>   
 
+	<menuitem title="Students" name="student-top-root" top="true" left="false"/>
+	<menuitem title="Students" name="student-root-student-green" parent="student-top-root" action="action.student.root.student" icon="fa-user" icon-background="green" top="true" left="false"/>
+
 	<menuitem title="Peoples" name="student-root-people" parent="student-root" action="action.student.root.people"/>
 	<action-view name="action.student.root.people" title="Peoples" model="com.axelor.student.db.People">
 		<view type="grid" name="people-grid"/>
-		<view type="form" name="people-form"/>
 		<view type="cards" name="people-cards"/>
+		<view type="form" name="people-form"/>
+		<view-param name="forceEdit" value="true"/>
+		<view-param name="showArchived" value="true"/>
+		<view-param name="details-view" value="true"/>
+		<view-param name="search-filters" value="people-search-filters"/>
+	</action-view>
+	
+	<menuitem title="Peoples test" name="student-root-people-testing" parent="student-root" action="action.student.root.people.testing"/>
+	<action-view name="action.student.root.people.testing" title="Peoples" model="com.axelor.student.db.People">
+		<view type="cards" name="people-cards"/>
+		<view type="grid" name="people-grid"/>
+		<view type="form" name="people-form"/>
+		<domain>self.test = :_test</domain>
+		<context name="_test" expr="Testing"/>
 	</action-view>
 
 	<menuitem title="Schools" name="student-root-school" parent="student-root" action="action.student.root.school"/>
@@ -29,7 +46,8 @@
 	<action-view name="action.student.test.school" title="Test schools" model="com.axelor.student.db.School">
 		<view type="grid" name="school-test-grid"/>
 		<view type="form" name="school-form"/>
-		<domain>self.address = null</domain>
+<!-- 		<domain>self.address = null</domain> -->
+		<context name="_showRecord" expr="eval: 2"/>
 	</action-view>
 
 	<menuitem title="Addresses" name="student-root-address" parent="student-root" action="action.student.root.address"/>
