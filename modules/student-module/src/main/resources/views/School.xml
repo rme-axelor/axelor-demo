@@ -26,7 +26,7 @@
 		</menubar>
 		<field name="schoolType" title="Test school"/>
 		<field name="schoolName"/>
-		<field name="address" domain="self.completeAddress = 'SURAT'" massUpdate="true"/>
+		<field name="address" domain="self.school is null" massUpdate="true"/>
 		<button onClick="clickMe" prompt="Are you sure?" name="clickMeBtn" title="Click Me!" icon="fa-print"/>
 	</grid>
 	
@@ -34,7 +34,7 @@
 		<panel>
 			<field name="schoolType" />
 			<field name="schoolName"/>
-			<field name="address" canEdit="true"/>
+			<field name="address" canEdit="true" domain="self.school is null"/>
 		</panel>
 		<panel-tabs>
 			<panel-related field="studentList" colSpan="12" form-view="student-popup-form" grid-view="student-grid"

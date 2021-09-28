@@ -58,6 +58,13 @@
 
 	<action-record name="action-student-record-onnew" model="com.axelor.student.db.Student">
 		<field name="parentName" expr="Axelor"/>
+		<field name="status" expr="eval: STATUS.PASS"/>
+		<field name="percentage" expr="eval: 40"/>
+		<field name="school" expr="action: action-student-record-default-school"/>
+	</action-record>
+
+	<action-record name="action-student-record-default-school" model="com.axelor.student.db.School" search="self.address IS NOT NULL">
+		<field name="schoolName" expr="Default"/>
 	</action-record>
 
 </object-views>

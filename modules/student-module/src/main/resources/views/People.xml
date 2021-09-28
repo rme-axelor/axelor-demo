@@ -10,7 +10,7 @@
 		<field name="timeOfBirth"/>
 	</grid>  
     
-	<form model="com.axelor.student.db.People" title="People" name="people-form">
+	<form model="com.axelor.student.db.People" title="People" name="people-form" onNew="action-people-record-set-defaults-onnew">
 		<panel name="mainPanel" title="Main panel">
 			<field name="$isValidated" title="Validated" type="one-to-many" target="com.axelor.student.db.Address" colSpan="12"/>
 			<field name="reference"/>
@@ -36,7 +36,8 @@
 					<field name="dateTimeT"/>
 				</panel>
 				<panel name="imagePanel" title="Image panel">
-					<field name="image"/>
+<!-- 					<field name="image" widget="binary-link"/> -->
+					<field name="image" widget="Image"/>
 				</panel>
 			</panel>
 			<panel name="passwordPanel" title="Password" onTabSelect="action-people-record-password-tab-select">
@@ -89,6 +90,10 @@
 			<domain>self.dateTimeT != null</domain>
 		</filter>
 	</search-filters>
+
+	<action-record name="action-people-record-set-defaults-onnew" model="com.axelor.student.db.People">
+		<field name="test" expr="eval: _test" />
+	</action-record>
 
 	<action-record name="action-people-record-on-personal-details-tab-select" model="com.axelor.student.db.People">
 		<field name="dateOfBirth" expr="eval: __date__" if="dateOfBirth == null"/>
