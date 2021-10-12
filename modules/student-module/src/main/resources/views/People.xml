@@ -25,7 +25,9 @@
 			<spacer/>
 			<static colSpan="12">This is static text</static>
 			
-			<field name="transientTest"/> 
+			<!-- avoid using 'save' i.e. saving of record on onchange event. Just done for testing purpose -->
+			
+			<field name="transientTest" onChange="save,action-people-method-check-possibility"/> 
 			<field name="test"/>
 		</panel>
 		<panel-tabs>
@@ -111,5 +113,10 @@
 	<action-record name="action-people-record-fill-validate" model="com.axelor.student.db.People">
 		<field name="$isValidated" expr="eval: true"/>
 	</action-record>
+
+	<action-method name="action-people-method-check-possibility">
+		<call class="com.axelor.student.web.PeopleController" method="checkPossibility"/>
+	</action-method>
+
 
 </object-views>
