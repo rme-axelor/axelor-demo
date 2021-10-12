@@ -10,7 +10,8 @@
 		<field name="timeOfBirth"/>
 	</grid>  
     
-	<form model="com.axelor.student.db.People" title="People" name="people-form" onNew="action-people-record-set-defaults-onnew">
+	<form model="com.axelor.student.db.People" title="People" name="people-form" onNew="action-people-group-on-new">
+<!-- 		onLoad="com.axelor.student.web.PeopleController:checkPossibility"> -->
 		<panel name="mainPanel" title="Main panel">
 			<field name="$isValidated" title="Validated" type="one-to-many" target="com.axelor.student.db.Address" colSpan="12"/>
 			<field name="reference"/>
@@ -93,6 +94,11 @@
 		</filter>
 	</search-filters>
 
+	<action-group name="action-people-group-on-new">
+		<action name="action-people-record-set-defaults-onnew"/>
+		<action name="action-people-record-call-service-method"/>
+	</action-group>
+
 	<action-record name="action-people-record-set-defaults-onnew" model="com.axelor.student.db.People">
 		<field name="test" expr="eval: _test" />
 	</action-record>
@@ -118,5 +124,7 @@
 		<call class="com.axelor.student.web.PeopleController" method="checkPossibility"/>
 	</action-method>
 
-
+	<action-record name="action-people-record-call-service-method" model="com.axelor.student.db.People">
+		<field name="test" expr="call:com.axelor.student.service.PeopleService:test()"/>
+	</action-record>
 </object-views>

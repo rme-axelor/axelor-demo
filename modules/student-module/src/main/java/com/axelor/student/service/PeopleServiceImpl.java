@@ -8,4 +8,9 @@ public class PeopleServiceImpl implements PeopleService {
 	public void validateDOB(People people) {
 		System.err.println("Inside People Service Impl class.");
 	}
+
+	@Override
+	public String test() {
+		return "Hello";
+	}
 }
